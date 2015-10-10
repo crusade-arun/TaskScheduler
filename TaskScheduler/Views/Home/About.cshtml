@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "About";
+    ViewBag.Message = "Task Scheduler - Description";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>There are two parts of the Task Scheduler app:
+    <ol>
+        <li>
+            <b>Manager Login:</b> <br />
+            The users having manager role are able to create projects and also set progress levels for the project. These users are also able to assign tasks related to the projects to the other users (employees) and can also track the current status of the work done by other users (employees). In addition to this, creation of login information for other users is only allowed to user having manager role.
+        </li>
+        <br />
+        <li>
+            <b>Employee Login</b> <br />
+            The users having employee role will be able the see the current project they are assigned to by the manager. These users will be able to track the amount of work that is left to be done and can also update the progress level of the project depending on the work that was accomplised by them.
+        </li>
+    </ol>    
+</p>

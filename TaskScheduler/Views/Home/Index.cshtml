@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Task Scheduler</h1>
+    <p class="lead">This system can be used by Managers and Employees for viewing the task status and task assignment.</p>
+    <p class="lead">Managers can use this application for assigning tasks to employees.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Register</h2>
+        <p>
+            For creating a new account please click on the "Register" button
+        </p>
+        <p>@Html.ActionLink("Register", "Register", "Account", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Login</h2>
+        <p>
+            Users can login to veiw their tasks and users with manager role can assign tasks to other users.
+        </p>
+        <p>@Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn btn-default" })</p>
+    </div>
+</div>
