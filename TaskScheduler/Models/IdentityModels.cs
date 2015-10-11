@@ -29,5 +29,7 @@ namespace TaskScheduler.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<TaskScheduler.Models.Project> Projects { get; set; }
     }
 }
