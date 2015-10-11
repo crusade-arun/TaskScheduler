@@ -10,6 +10,7 @@ namespace TaskScheduler.Models
     {
         public int id { get; set; }
         [Display(Name="Project name")]
+        [Required]
         public string name { get; set; }
         [Display(Name = "Assigned to")]
         public string assignedTo { get; set; }
@@ -20,6 +21,7 @@ namespace TaskScheduler.Models
         [Display(Name = "End date")]
         public DateTime endDate { get; set; }
         [Display(Name = "Project status")]
+        [Required]
         public int status { get; set; }
     }
 }
