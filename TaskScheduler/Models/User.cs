@@ -25,5 +25,7 @@ namespace TaskScheduler.Models
         public string username { get; set; }
         [Display(Name = "Password")]
         public string password { get; set; }
+
+        public virtual ICollection<Project> Projects { get; set; }
     }
 }
