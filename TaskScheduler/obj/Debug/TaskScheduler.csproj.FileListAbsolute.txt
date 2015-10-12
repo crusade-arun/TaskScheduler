@@ -108,3 +108,5 @@ C:\Users\D062751\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskSchedul
 C:\Users\D062751\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\D062751\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\D062751\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Jay Barbhaiya\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.Migrations.InitialCreate.resources
+C:\Users\Jay Barbhaiya\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.csproj.GenerateResource.Cache

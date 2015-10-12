@@ -17,6 +17,7 @@ namespace TaskScheduler.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -136,16 +137,25 @@ namespace TaskScheduler.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Register()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var userAccountRole = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().UserRole;
+            if (userAccountRole == "Manager")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {

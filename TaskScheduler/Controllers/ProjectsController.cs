@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TaskScheduler.Models;
+using Microsoft.AspNet.Identity;
 
 namespace TaskScheduler.Controllers
 {
@@ -38,7 +39,16 @@ namespace TaskScheduler.Controllers
         // GET: Projects/Create
         public ActionResult Create()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var userAccountRole = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().UserRole;
+            if (userAccountRole == "Manager")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: Projects/Create
@@ -92,16 +102,25 @@ namespace TaskScheduler.Controllers
         // GET: Projects/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            var userId = User.Identity.GetUserId();
+            var userAccountRole = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().UserRole;
+            if (userAccountRole == "Manager")
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Project project = db.Projects.Find(id);
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(project);
             }
-            Project project = db.Projects.Find(id);
-            if (project == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(project);
         }
 
         // POST: Projects/Delete/5
