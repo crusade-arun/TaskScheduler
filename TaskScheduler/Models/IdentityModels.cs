@@ -31,5 +31,7 @@ namespace TaskScheduler.Models
         }
 
         public System.Data.Entity.DbSet<TaskScheduler.Models.Project> Projects { get; set; }
+
+        public DbSet<UserAccount> UserAccounts { get; set; }
     }
 }
