@@ -115,3 +115,7 @@ C:\Users\D062751\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskSchedul
 C:\Users\Jay Barbhaiya\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.Migrations.Projectmodelupdate.resources
 C:\Users\Jay Barbhaiya\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.Migrations.Updatingdateasstring.resources
 C:\Users\Jay Barbhaiya\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.Migrations.Addingprojectdescriptiontomodel.resources
+C:\Users\D062751\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.Migrations.Projectmodelupdate.resources
+C:\Users\D062751\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.Migrations.Updatingdateasstring.resources
+C:\Users\D062751\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.Migrations.Addingprojectdescriptiontomodel.resources
+C:\Users\Jay Barbhaiya\Documents\Visual Studio 2013\Projects\TaskScheduler\TaskScheduler\obj\Debug\TaskScheduler.Migrations.Addingprojectdescription.resources

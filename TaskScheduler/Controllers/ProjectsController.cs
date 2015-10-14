@@ -16,12 +16,14 @@ namespace TaskScheduler.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Projects
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Projects.ToList());
         }
 
         // GET: Projects/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace TaskScheduler.Controllers
         }
 
         // GET: Projects/Create
+        [Authorize]
         public ActionResult Create()
         {
             var userId = User.Identity.GetUserId();
@@ -56,7 +59,8 @@ namespace TaskScheduler.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,assignedTo,startDate,endDate,status")] Project project)
+        [Authorize]
+        public ActionResult Create([Bind(Include = "id,name,projectDesc,assignedTo,startDate,endDate,status")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -69,6 +73,7 @@ namespace TaskScheduler.Controllers
         }
 
         // GET: Projects/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             var userId = User.Identity.GetUserId();
@@ -93,7 +98,8 @@ namespace TaskScheduler.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,name,assignedTo,startDate,endDate,status")] Project project)
+        [Authorize]
+        public ActionResult Edit([Bind(Include = "id,name,projectDesc,assignedTo,startDate,endDate,status")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -105,6 +111,7 @@ namespace TaskScheduler.Controllers
         }
 
         // GET: Projects/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             var userId = User.Identity.GetUserId();
@@ -131,6 +138,7 @@ namespace TaskScheduler.Controllers
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Project project = db.Projects.Find(id);
