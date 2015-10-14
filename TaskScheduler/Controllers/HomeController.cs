@@ -15,14 +15,14 @@ namespace TaskScheduler.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Task Scheduler - Description";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Task Scheduler - Contant and Support";
 
             return View();
         }

@@ -71,6 +71,12 @@ namespace TaskScheduler.Controllers
         // GET: Projects/Edit/5
         public ActionResult Edit(int? id)
         {
+            var userId = User.Identity.GetUserId();
+            var userAccountRole = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().UserRole;
+            if (userAccountRole == "Manager")
+            {
+                ViewBag.Role = "Manager";
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -87,7 +93,6 @@ namespace TaskScheduler.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,name,assignedTo,startDate,endDate,status")] Project project)
         {
             if (ModelState.IsValid)
