@@ -19,7 +19,27 @@ namespace TaskScheduler.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.Projects.ToList());
+            var userId = User.Identity.GetUserId();
+            var userAccountRole = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().UserRole;
+            if (userAccountRole == "Manager")
+            {
+                return View(db.Projects.ToList());
+            }
+            else
+            {
+                return RedirectToAction("EmployeeIndex", "Projects");
+            }
+        }
+
+        public ActionResult EmployeeIndex()
+        {
+            var userId = User.Identity.GetUserId();
+            var userAccountRole = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().UserRole;
+            var userAccountName = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().FirstName;
+            var empProject = (from proj in db.Projects
+                             where proj.assignedTo.Contains(userAccountName)
+                             select proj).ToList();
+            return View(empProject);
         }
 
         // GET: Projects/Details/5
@@ -44,14 +64,23 @@ namespace TaskScheduler.Controllers
         {
             var userId = User.Identity.GetUserId();
             var userAccountRole = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().UserRole;
-            if (userAccountRole == "Manager")
+            
+            var emps = (from emp in db.UserAccounts
+                       where emp.UserRole.Contains("Employee")
+                       select emp.FirstName).ToList();
+            ViewBag.empNames = new string[emps.Count];
+            for (var i = 0; i < emps.Count; i++)
             {
-                return View();
+                ViewBag.empNames[i] = emps[i];
             }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
+                if (userAccountRole == "Manager")
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("ErrorLogin", "Account");
+                }
         }
 
         // POST: Projects/Create
@@ -78,6 +107,14 @@ namespace TaskScheduler.Controllers
         {
             var userId = User.Identity.GetUserId();
             var userAccountRole = db.UserAccounts.Where(u => u.ApplicationUserId == userId).First().UserRole;
+            var emps = (from emp in db.UserAccounts
+                        where emp.UserRole.Contains("Employee")
+                        select emp.FirstName).ToList();
+            ViewBag.empNames = new string[emps.Count];
+            for (var i = 0; i < emps.Count; i++)
+            {
+                ViewBag.empNames[i] = emps[i];
+            }
             if (userAccountRole == "Manager")
             {
                 ViewBag.Role = "Manager";
@@ -131,7 +168,7 @@ namespace TaskScheduler.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("ErrorLogin", "Account");
             }
         }
 
